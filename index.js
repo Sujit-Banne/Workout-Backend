@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const mongoose = require("mongoose")
 const workoutsRoutes = require('./routes/Workouts')
+const cors = require('cors')
 
 const dotenv = require('dotenv')
 dotenv.config()
@@ -11,6 +12,7 @@ const MONGO_URL = process.env.MONGO_URL
 const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
+app.use(cors())
 
 //routes
 app.use('/api/workouts/', workoutsRoutes)
